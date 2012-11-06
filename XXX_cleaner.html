@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="ja" xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="utf-8" />
+<title>クリーナー</title></head><body>
+
+<script src="lib/MDN_Other.js"></script>
+
+<script>
+
+var LIST = document.createElement("ul");
+
+MDN_Other.forEach(function(e) {
+	if(
+		((/redirect\-/).test(e) == false) &&
+		((/\(external\)/).test(e) == false)
+	) {
+		document.write('"' + e + '",<br />');
+	}
+});
+
+document.body.appendChild(LIST);
+
+</script>
+</body></html>

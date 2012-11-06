@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8" /><title>無題ドキュメント</title></head><body>
+
+<script src="lib/MDN_HTML.js"></script>
+
+<script>
+var LIST = document.createElement("ul");
+
+MDN_HTML.forEach(function(e) {
+	if( /redirect-/.test(e) == false ) {	
+		var li = document.createElement("li");
+		var  a = document.createElement("a");
+		
+		a.setAttribute("href","\https:\/\/developer.mozilla.org\/en-US\/docs\/" + e);
+		a.appendChild(
+			document.createTextNode(e)
+		);
+		li.appendChild(a);
+		LIST.appendChild(li);
+	}
+});
+
+document.body.appendChild(LIST);
+</script>
+
+</body></html>
