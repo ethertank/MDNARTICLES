@@ -1,13 +1,11 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8" /><title>無題ドキュメント</title></head><body>
 
-<script src="lib/MDN_Persona.js"></script>
+<script src="lib/MDN_AJAX.js"></script>
 
 <script>
 var LIST = document.createElement("ul");
 
-var arr = MDN_Persona.concat(MDN_BrowserID);
-
-arr.forEach(function(e) {
+MDN_AJAX.forEach(function(e) {
 	var li = document.createElement("li");
 	var  a = document.createElement("a");
 	
