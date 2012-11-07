@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><title>Spell Check</title></head><body><script>
+var ul = document.createElement("ul"),
+    list = [
+  "ECAMScript",
+  "ECMA Script",
+  "Fierfix",
+  "Fiefox",
+  "Fire fox",
+  "Firefx",
+  "firegox",
+  "Fireox",
+  "Firfox",
+  "firefxo",
+  "forefox",
+  "functon",
+  "HMTL",
+  "HTLM",
+  "HTMK",
+  "HTML 5",
+  "Java Script",
+  "Java-script",
+  "JavaScipt",
+  "JavaScriot",
+  "JavaScrpt",
+  "JavaSript",
+  "JavasSript",
+  "JavScript",
+  "JsvaScript",
+  "JavaScirpt",
+  "moziila",
+  "mozila",
+  "Netsape",
+  "propety",
+  "Semonkey",
+  "samonkey",
+  "StyleSheeet",
+  "Thunderbid",
+  "Thundebird",
+  "Thunder bird",
+  "souce",
+  "インターファイス",
+  "ウエア",
+  "がが",
+  "クオート",
+  "クオーテーション",
+  "そそ",
+  "しし",
+  "シュミレート",
+  "シュミレーション",
+  "シュミレーター",
+  "スプリクティング",
+  "ちぇーん",
+  "てて",
+  "でで",
+  "データー",
+  "とと",
+  "なな",
+  "にに",
+  "のの",
+  "はは",
+  "れれ",
+  "をを",
+  "活性化"
+];
+
+list.forEach(function(e) {
+    var li = document.createElement("li"),
+         a = document.createElement("a");
+
+    a.setAttribute(
+        "href",
+        encodeURI('https://www.google.co.jp/search?q=site:developer.mozilla.org+"' + e + '"')
+    );
+    
+    a.appendChild(
+        document.createTextNode(e)
+    );
+    
+    li.appendChild(a);    
+    ul.appendChild(li);
+});
+
+document.body.appendChild(ul);
+</script></body></html>
