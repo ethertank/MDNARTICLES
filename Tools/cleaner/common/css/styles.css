@@ -35,7 +35,7 @@ h1 {
 
 textarea {
 	font-family: monospace; font-size: .95em;
-	display: block; width:95%; min-height: 280px; margin-bottom: 1.25em; padding: 3px;
+	display: block; width:98%; min-height: 280px; margin-bottom: 1.25em; padding: 3px;
 	box-shadow: inset 1px 1px 2px 0 #888;
 	background: #fff;
 	border: 1px solid #777;

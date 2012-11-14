@@ -43,15 +43,42 @@ b.addEventListener("click", function() {
     // よくある誤字の修正 ( http://jsfiddle.net/ethertank/eK6a2/ )
     s = s.replace(/Mozil*a/g, 'Mozilla');
     s = s.replace(/F(?:(?:ir)|(?:ie)|(?:ier)|(?:ore))(?:(?:g|f)*o*x)/g, 'Firefox');
-    
+	
+	// 	<span class="comment">xxx</span> を <!-- xxx --> に置換
+    s = s.replace(/<span class="comment">(.*)<\/span>/g, '<!-- $1 -->');
+	
     // 古い言語間リンク用テンプレートのマクロの "<p>{{" と "}}</p>" を "<!--" と "-->" に置換
     s = s.replace(/<(?:p|(?:div))>\s*\{\{(\s*(wiki\.)*languages.*)\}\}\s*<\/(?:p|(?:div))>/g,'<!--$1-->');
 
     // 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
     s = s.replace(/<p>(\{\{\s*((?:MDCProjectPagesTOC)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi, '<div>$1</div>');
 	
+	// トリミング
 	s = s.trim();
     
     t.value = s;
-
+	
 }, false);
+
+
+/*
+
+# TODO (･ω･｀)
+
+	見出しの中の 不要な nbsp エスケープの置換とトリム
+
+	見出しの id/name 内の".C2.A0"を"_"へ置換
+
+	#Syntax の直後の単独の pre に ".eval" しかない場合、".syntaxbox" に。
+	.twopartsyntaxbox というクラスの使用条件に合致する場合処理を避けなければならない。
+
+	見出しのキャメライズの統一、空 p に変換されてしまうコード末尾の改行コードを削除
+
+	pre の 古いハイライト用のクラス名を新しいのに変えて、その pre 内部の HTML タグを除去
+
+	pre 内部の 不要な nbsp を半角スペースに置換
+
+	見出しの name と id が異なる場合、name の値に統一し、同一 id を持つ要素が重複して存在する場合、
+	二つ目以降の id に "-2" の様な連番を振った上で内容からの自動変換を防ぐ為に同値の name 属性を設定し重複を回避。
+	…正規表現だけで出来るのか？
+*/
