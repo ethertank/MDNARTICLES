@@ -1,5 +1,15 @@
 "use strict";
 
+(function() {
+    var _t = "[\x09-\x0D\x20\xA0\x85\u1680\u180E\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]+",
+        _l = new RegExp("^" + _t),
+        _r = new RegExp(_t + "$"),
+        SP = String.prototype;
+    SP.trimLeft = function() { return this.replace(_l, ""); };
+    SP.trimRight = function() { return this.replace(_r, ""); };
+    SP.trim = function() { return this.trimLeft().trimRight(); };
+})();
+
 var b = document.getElementById("b");
 
 b.addEventListener("click", function() {
@@ -39,6 +49,8 @@ b.addEventListener("click", function() {
 
     // 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
     s = s.replace(/<p>(\{\{\s*((?:MDCProjectPagesTOC)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi, '<div>$1</div>');
+	
+	s = s.trim();
     
     t.value = s;
 
