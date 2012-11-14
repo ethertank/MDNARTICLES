@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@import url(http://fonts.googleapis.com/css?family=Sancreek);
+
+body {
+	padding: 0 20px;
+	font-size: 13px;
+	background-color: #eee;
+	background-size: 10px 10px;
+	background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 9px, #fff 10px), -webkit-linear-gradient(top, #eee 9px, #fff 10px);
+	background-image:    -moz-linear-gradient(left, rgba(255,255,255,0) 9px, #fff 10px),    -moz-linear-gradient(top, #eee 9px, #fff 10px);
+	background-image:         linear-gradient(left, rgba(255,255,255,0) 9px, #fff 10px),         linear-gradient(top, #eee 9px, #fff 10px);
+}
+
+h1, h2, button { font-family: 'Sancreek', cursive; font-weight: 400; }
+
+button { font-size: 1.5em; }
+
+textarea { font-family: monospace; font-size: .95em; display: block; width:95%; min-height: 280px;  margin-bottom: 1.25em; }
+
+li a { display: inline-block; width: 90%; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
+
+.copyright { text-align: right; }

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>MDN markup cleaner (for English)</title>
+<link rel="stylesheet" href="common/css/styles.css" />
+</head><body>
+
+
+
+<h1>MDN Markup Cleaner (for en-US)</h1>
+
+<button id="b">Convert</button>
+<textarea id="t">
+&lt;h2 id="See.C2.A0Also_" name="See.C2.A0Also_"&gt;See&nbsp;Also &lt;/h2&gt;
+&lt;a href="en/Core_JavaScript_1.5_Reference/a" title="en/Core_JavaScript_1.5_Reference/a"&gt;a&lt;/a&gt;
+&lt;a href="/en/Core_JavaScript_1.5_Reference/b" title="/en/Core_JavaScript_1.5_Reference/b"&gt;b&lt;/a&gt;
+&lt;a href="en-US/docs/Core_JavaScript_1.5_Guide/c" title="en-US/docs/Core_JavaScript_1.5_Guide/c"&gt;c&lt;/a&gt;
+&lt;a href="/en-US/docs/Core_JavaScript_1.5_Guide/d" title="/en-US/docs/Core_JavaScript_1.5_Guide/d"&gt;d&lt;/a&gt;
+&lt;a href="Project:en/X"&gt;MDC:X&lt;/a&gt;
+&lt;a href="/Project:en/X"&gt;MDC:X&lt;/a&gt;
+&lt;pre class="eval"&gt;&nbsp;&lt;/pre&gt;
+&lt;p&gt;{{ cssref() }} {{ cssref("") }}&lt;/p&gt;
+&lt;p&gt;XXX&nbsp;&lt;/p&gt; &lt;p&gt;&nbsp;&lt;/p&gt; &lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Mozila Firfox Mozillla Fiegox Mozilllla Fierfx&lt;/p&gt;
+&lt;h2 id="Syntax"&gt;Syntax&lt;/h2&gt;
+&lt;h2 id="Syntax"&gt;Syntax&lt;/h2&gt;
+&lt;p&gt;{{ languages( { "fr": "fr/CSS/display", "pl": "pl/CSS/display" } ) }}&lt;/p&gt;
+&lt;p&gt;{{ wiki.languages( { "fr": "fr/CSS/display", "pl": "pl/CSS/display" } ) }}&lt;/p&gt;
+</textarea>
+
+<h2>Issue</h2>
+<ul>
+    <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=795272">795272 – Non-breaking spaces in H tags are encoded in the id attribute, would probably be better to make underscore</a></li>
+    <li><a href="http://jsfiddle.net/ethertank/eK6a2/embedded/result/">GozillaList - jsFiddle</a></li>
+</ul>
+
+<p class="copyright"><small>license: <a href="http://sam.zoy.org/wtfpl/COPYING">WTFPL</a></small></p>
+
+<script src="js/cleaner_en-US.js"></script></body></html>
