@@ -19,5 +19,3 @@ button { font-size: 1.5em; }
 textarea { font-family: monospace; font-size: .95em; display: block; width:95%; min-height: 280px;  margin-bottom: 1.25em; }
 
 li a { display: inline-block; width: 90%; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
-
-.credit { text-align: right; }
