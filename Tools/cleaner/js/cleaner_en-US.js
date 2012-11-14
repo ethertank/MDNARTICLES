@@ -25,7 +25,7 @@ b.addEventListener("click", function() {
     s = s.replace(/\(("")*\)\}\}/g, '}}');
 
     // 空 p
-    s = s.replace(/<p>\s<\/p>/g, '');
+    s = s.replace(/<p>(?:\s|(?:&nbsp;))*<\/p>/g, '');
 
     // p, dt, dd, li, hn の最後のスペース削除
     s = s.replace(/\s<\/(p|(?:dt)|(?:dd)|(?:li)|(?:h[1-6]))>/g, '</$1>');
