@@ -56,7 +56,6 @@ b.addEventListener("click", function() {
 	
 
 
-
 	// トリミング
 	s = s.trim();
 	
