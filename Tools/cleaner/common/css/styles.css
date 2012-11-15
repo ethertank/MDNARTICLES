@@ -1,7 +1,11 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=Sancreek);
 
+html { overflow-y: scroll; }
+
 body {
+	font-family: "Times New Roman", Times, serif;
+	line-height: 1.5;
 	margin: 0; padding: 0;
 	font-size: 13px;
 	background-color: #eee;
@@ -10,6 +14,9 @@ body {
 	background-image:    -moz-linear-gradient(left, rgba(255,255,255,0) 9px, #fff 10px),    -moz-linear-gradient(top, #eee 9px, #fff 10px);
 	background-image:     linear-gradient(to right, rgba(255,255,255,0) 9px, #fff 10px),  linear-gradient(to bottomm, #eee 9px, #fff 10px);
 }
+
+h1 { font-size: 1.5em; }
+h2, button { font-size: 1.25em; }
 
 h1, h2, button { font-family: 'Sancreek', cursive; font-weight: 400; }
 
@@ -27,14 +34,25 @@ h1 {
 	text-indent: 4px;
 }
 
-#b { font-size: 1.5em; padding: 2px 48px; margin: 20px 0 0; }
+#b { padding: 2px 48px; margin: 10px 0 0; }
 
 textarea {
 	font-family: monospace; font-size: .95em;
-	display: block; width:98%; min-height: 370px; margin: 0 0 1.25em; padding: 3px;
+	display: block; box-sizing: border-box; width:100%; min-height: 420px; margin: 0 0 1.25em; padding: 3px;
 	box-shadow: inset 1px 1px 2px 0 #888;
 	background: #fff;
 	border: 1px solid #777;
 }
+
+details { background: #fff; border: 1px solid #999; padding: 3px; }
+details summary { padding: 3px; }
+details > div { padding: 5px 15px; }
+
+.inlineList { display: block; margin: 1em 0; padding: 0; }
+.inlineList:before { content: "{"; }
+.inlineList:after { content: "}"; }
+.inlineList li { display: inline-block; margin: 0; }
+.inlineList li:after { content: ", "; }
+.inlineList .last:after { content: none; }
 
 .forkMe img { position: absolute; top: 0; right: 0; border: 0; }
