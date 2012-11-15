@@ -27,11 +27,11 @@ h1 {
 	text-indent: 4px;
 }
 
-#b { font-size: 1.5em; padding: 2px 24px; margin: 20px 0; }
+#b { font-size: 1.5em; padding: 2px 48px; margin: 20px 0 0; }
 
 textarea {
 	font-family: monospace; font-size: .95em;
-	display: block; width:98%; min-height: 370px; margin-bottom: 1.25em; padding: 3px;
+	display: block; width:98%; min-height: 370px; margin: 0 0 1.25em; padding: 3px;
 	box-shadow: inset 1px 1px 2px 0 #888;
 	background: #fff;
 	border: 1px solid #777;

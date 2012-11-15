@@ -54,6 +54,10 @@ b.addEventListener("click", function() {
 	// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
 	s = s.replace(/<p>(\{\{\s*((?:(?:MDCProjectPages)|(?:html5article)Toc)|((?:css)|(?:dom)ref)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi,'<div>$1</div>');
 	
+	// <img alt="Firefox on Linux" fileid="617" src="File:en/Media_Gallery/A.png" />
+	// <img alt="Firefox on Linux" src="/files/617/A.png" />
+
+	s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*)\"?/g, 'src="/files/$1/$2"');
 
 
 	// トリミング
