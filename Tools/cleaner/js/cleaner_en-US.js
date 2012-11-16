@@ -10,9 +10,11 @@
 	SP.trim = function() { return this.trimLeft().trimRight(); };
 })();
 
-var b = document.getElementById("b");
+var c = document.getElementById("c");
+var d = document.getElementById("d");
 
-b.addEventListener("click", function() {
+
+c.addEventListener("click", function() {
 	var t = document.getElementById("t"), s = t.value;
 
 	
@@ -52,7 +54,7 @@ b.addEventListener("click", function() {
 	s = s.replace(/<(?:p|(?:div))>\s*\{\{(\s*(wiki\.)*languages.*)\}\}\s*<\/(?:p|(?:div))>/g,'<!--$1-->');
 	
 	// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
-	s = s.replace(/<p>(\{\{\s*((?:(?:MDCProjectPages)|(?:html5article)Toc)|((?:css)|(?:dom)ref)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi,'<div>$1</div>');
+	s = s.replace(/<p>(\{\{\s*((?:(?:MDCProjectPages)|(?:html5article)Toc)|(?:(?:css)|(?:dom)ref)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi,'<div>$1</div>');
 	
 	// <img alt="Firefox on Linux" fileid="617" src="File:en/Media_Gallery/A.png" />
 	// <img alt="Firefox on Linux" src="/files/617/A.png" />
@@ -67,6 +69,11 @@ b.addEventListener("click", function() {
     t.value = s;
 	
 }, false);
+
+d.addEventListener("click", function() {
+	document.getElementById("t").value = "";
+}, false);
+
 
 
 /*

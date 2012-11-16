@@ -1,17 +1,28 @@
-﻿<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+﻿<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>MDN Code Cleaner (for en-US)</title>
+<meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="common/css/styles.css" />
 </head><body>
 
-<header id="grobal_header">
+<!--[if lt IE 7]><p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p><![endif]-->
+
+<header id="global_header">
 <h1>MDN Code Cleaner (for en-US)</h1>
 </header>
 
 <div class="content">
 
-<button id="b">Convert</button>
+<div>
+<button id="c">Convert</button>
+<button id="d">Delete</button>
+</div>
+
 <textarea id="t">
 &lt;p&gt;{{domref('')}}&lt;/p&gt;
+&lt;p&gt;{{ domref() }} {{ cssref("") }}&lt;/p&gt;
 
 &lt;h2 id="See.C2.A0Also_" name="See.C2.A0Also_"&gt;See&nbsp;Also &lt;/h2&gt;
 &lt;h2 id="See_also" name="See_also"&gt;See also&lt;/h2&gt;
@@ -22,6 +33,7 @@
 &lt;a href="/en-US/docs/Core_JavaScript_1.5_Guide/d" title="/en-US/docs/Core_JavaScript_1.5_Guide/d"&gt;d&lt;/a&gt;
 &lt;a href="Project:en/X"&gt;MDC:X&lt;/a&gt;
 &lt;a href="/Project:en/X"&gt;MDC:X&lt;/a&gt;
+&lt;a href="/Special:Tags?tag=js-ctypes&amp;language=en" title="Special:Tags?tag=js-ctypes&amp;language=en"&gt;View All...&lt;/a&gt;
 
 &lt;img alt="Mozilla Application Suite on Win32" fileid="618" src="File:en/Media_Gallery/ConfirmEx_moz.png" /&gt;
 &lt;img alt="Mozilla Application Suite on Win32" src="/files/618/ConfirmEx_moz.png" /&gt;
@@ -29,8 +41,6 @@
 &lt;img alt="Firefox on Linux" src="/files/617/ConfirmEx_fx_linux.png" /&gt;
 
 &lt;pre class="eval"&gt;&nbsp;&lt;/pre&gt;
-
-&lt;p&gt;{{ cssref() }} {{ cssref("") }}&lt;/p&gt;
 
 &lt;p&gt;XXX&nbsp;&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -47,27 +57,24 @@
 </textarea>
 
 
-<details>
-<summary>Issue and Credit</summary>
-<div>
+<section>
 <h2>Issue</h2>
 <ul>
 <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=795272">795272 – Non-breaking spaces in H tags are encoded in the id attribute, would probably be better to make underscore</a></li>
 <li><a href="http://jsfiddle.net/ethertank/eK6a2/embedded/result/">GozillaList - jsFiddle</a></li>
 <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=795841" title="795841 – Update File:en/Media_Gallery/... image links">795841 – Update File:en/Media_Gallery/... image links</a></li>
 </ul>
-<h2>Credit</h2>
+</section>
+
 <ul class="inlineList credit">
 <li><small>Made by: ethertank</small></li>
 <li><small>lastUpdate: Nov 15, 2012</small></li>
 <li class="last"><small>license: <a href="http://sam.zoy.org/wtfpl/COPYING">WTFPL</a></small></li>
 </ul>
-</div>
-</details>
 
-
-<a class="forkMe" href="https://github.com/ethertank/MDNARTICLES"><img src="common/img/gh.png" alt="Fork me on GitHub" width="149" height="149"></a>
 
 </div>
+
+<a id="forkMe" href="https://github.com/ethertank/MDNARTICLES">Fork me on GitHub</a>
 
 <script src="js/cleaner_en-US.js"></script></body></html>
