@@ -34,7 +34,10 @@
 		
 		// 不要になったクラス
 		s = s.replace(/pre class=\"eval\"/g, 'pre');
-		
+
+		// id / name 属性の .C2.A2 を アンダースコアに
+		s = s.replace(/((?:(?:id)|(?:name))=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');
+
 		// テンプレートの詰め
 		s = s.replace(/\{\{ /g, '{{');
 		s = s.replace(/ \}\}/g, '}}');
@@ -57,7 +60,7 @@
 		s = s.replace(/<(?:p|(?:div))>\s*\{\{(\s*(wiki\.)*languages.*)\}\}\s*<\/(?:p|(?:div))>/g,'<!--$1-->');
 		
 		// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
-		s = s.replace(/<p>(\{\{\s*((?:(?:MDCProjectPages)|(?:html5article)Toc)|(?:(?:css)|(?:dom)ref)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi,'<div>$1</div>');
+		s = s.replace(/<p>(\{\{\s*((?:(?:(?:MDCProjectPages)|(?:html5article))Toc)|(?:(?:css)|(?:dom)ref)|(?:translationInProgress)|(?:outDated))\s*\}\})<\/p>/gi,'<div>$1</div>');
 		
 		// 画像パスの修正（要検証） https://bugzilla.mozilla.org/show_bug.cgi?id=795841
 		s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*\"?)/g, 'src="/files/$1/$2');
@@ -78,9 +81,7 @@
 
 	見出しの id/name 内の".C2.A0"を"_"へ置換
 
-	#Syntax の直後の単独の pre に ".eval" しかない場合、".syntaxbox" に。
-
-	.twopartsyntaxbox というクラスの使用条件に合致する場合処理を避けなければならない。
+	#Syntax の直後の単独の pre に ".eval" しかない場合、".syntaxbox" に。　.twopartsyntaxbox というクラスの使用条件に合致する場合処理を避けなければならない。
 
 	見出しのキャメライズの統一、空 p に変換されてしまうコード末尾の改行コードを削除
 	
@@ -88,6 +89,5 @@
 	
 	pre 内部の 不要な nbsp を半角スペースに置換
 	
-	見出しの name と id が異なる場合、name の値に統一し、同一 id を持つ要素が重複して存在する場合、
-	二つ目以降の id に "-2" の様な連番を振った上で内容からの自動変換を防ぐ為に同値の name 属性を設定し重複を回避。…正規表現だけで出来るのか？
+	見出しの name と id が異なる場合、name の値に統一し、同一 id を持つ要素が重複して存在する場合、二つ目以降の id に "-2" の様な連番を振った上で内容からの自動変換を防ぐ為に同値の name 属性を設定し重複を回避。…正規表現だけで出来るのか？
 */
