@@ -32,11 +32,12 @@
 		s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/g, 'title="');	
 		
 		
-		// 不要になったクラス
-		s = s.replace(/pre class=\"eval\"/g, 'pre');
-
+		// 不要になったクラス (eval, deki-transform)
+		s = s.replace(/pre class=\"(?:eval|deki-transform)\"/g, 'pre');
+		
 		// id / name 属性の .C2.A2 を アンダースコアに
-		s = s.replace(/((?:(?:id)|(?:name))=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');
+		// s = s.replace(/((?:(?:id)|(?:name))=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');	
+
 
 		// テンプレートの詰め
 		s = s.replace(/\{\{ /g, '{{');
@@ -48,6 +49,7 @@
 		
 		// p, dt, dd, li, hn の最後のスペース削除
 		s = s.replace(/\s<\/(p|(?:dt)|(?:dd)|(?:li)|(?:h[1-6]))>/g, '</$1>');
+
 		
 		// よくある誤字の修正 ( http://jsfiddle.net/ethertank/eK6a2/ )
 		s = s.replace(/Mozil*a/g, 'Mozilla');
@@ -64,7 +66,11 @@
 		
 		// 画像パスの修正（要検証） https://bugzilla.mozilla.org/show_bug.cgi?id=795841
 		s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*\"?)/g, 'src="/files/$1/$2');
-	
+
+
+		// id / name 先頭及び末尾のアンダースコア（但し __proto__　等の為、２連続のものは除外）
+		s = s.replace(/(?:((?:\s(?:id)|(?:name))=\")(.*)_{1}?(\"))?/g, '$1$2$3');	
+
 		// トリミング
 		s = s.trim();
 		
