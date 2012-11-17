@@ -61,7 +61,7 @@ button:focus {
 
 textarea {
 	font-family: "Courier New", Courier, monospace; font-size: 1em; line-height: 1;
-	display: block; -moz-box-sizing: border-box; box-sizing: border-box; width:100%; min-height: 420px; margin: 0 0 1.25em; padding: 3px;
+	display: block; -moz-box-sizing: border-box; box-sizing: border-box; width:100%; min-height: 100px; margin: 0 0 1.25em; padding: 3px;
 	box-shadow: inset 1px 1px 2px 0 #888;
 	background: #fff;
 	border: 1px solid #777;
