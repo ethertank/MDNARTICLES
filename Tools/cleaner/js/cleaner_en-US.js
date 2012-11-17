@@ -4,19 +4,19 @@
 (function($) {
 
 	// js 有効時、即ちテキストエリア自動伸長プラグイン有効時にのみ通常の手動リサイズ機能をカット
-	$('textarea').css("resize","none");
+	$('#t').css("resize","none");
 
 
 	// プラグイン jQuery elastic の実行
-	$('textarea').elastic();
-	$('textarea').trigger('update');
+	$('#t').elastic();
+	$('#t').trigger('update');
 
 
 	// 本体。MDN の新システム Kuma で変更された URL などを修正。
 	// 数千ページを移植時に壊したんだから、本来はデータベース側で一括修正していただくべき所。
 	// しかしどうも大きな問題として捉えてない感じ。
 	$("#c").click(function() {
-		var t = document.getElementById("t"), s = t.value;
+		var t = $("#t")[0], s = t.value;
 		
 		// URL
 		s = s.replace(/href=\"\/*en(-US\/docs)*\//g, 'href="/en-US/docs/');
@@ -71,6 +71,14 @@
 		
 		t.value = s;
 	});
+
+
+	$("#d").click(function() {
+		$("#t")[0].value = "";
+		$("#t").css("height","inherit");
+	});
+
+
 })(jQuery);
 
 
