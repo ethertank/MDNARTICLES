@@ -39,9 +39,9 @@ button {
 button:hover,
 button:focus {
 	background-color: #005;
-	background-image: -webkit-linear-gradient(top, #9E9EFF, #00A3FF, #0052FF);
-	background-image:    -moz-linear-gradient(top, #9E9EFF, #00A3FF, #0052FF);
-	background-image:   linear-gradient(to bottom, #9E9EFF, #00A3FF, #0052FF);
+	background-image: -webkit-linear-gradient(top, #CBFBFF, #00A3FF, #0052FF);
+	background-image:    -moz-linear-gradient(top, #CBFBFF, #00A3FF, #0052FF);
+	background-image:   linear-gradient(to bottom, #CBFBFF, #00A3FF, #0052FF);
 }
 
 #global_header {
@@ -111,16 +111,6 @@ textarea {
 }
 
 
-
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-
-
-}
 
 
 /* ==========================================================================
