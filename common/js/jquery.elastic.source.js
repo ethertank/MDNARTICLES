@@ -43,21 +43,20 @@
 			return this.each( function() {
 
 				// Elastic only works on textareas
-				if ( this.type !== 'textarea' ) {
-					return false;
-				}
+				if ( this.type !== 'textarea' ) { return false; }
 					
-			var $textarea	= jQuery(this),
-				$twin		= jQuery('<div />').css({
-					'position'		: 'absolute',
-					'display'		: 'none',
-					'word-wrap'		: 'break-word',
-					'white-space'	:'pre-wrap'
-				}),
-				lineHeight	= parseInt($textarea.css('line-height'),10) || parseInt($textarea.css('font-size'),'10'),
-				minheight	= parseInt($textarea.css('height'),10) || lineHeight*3,
-				maxheight	= parseInt($textarea.css('max-height'),10) || Number.MAX_VALUE,
-				goalheight	= 0;
+				var
+					$textarea	= jQuery(this),
+					$twin		= jQuery('<div />').css({
+						'position'		: 'absolute',
+						'display'		: 'none',
+						'word-wrap'		: 'break-word',
+						'white-space'	:'pre-wrap'
+					}),
+					lineHeight	= parseInt($textarea.css('line-height'),10) || parseInt($textarea.css('font-size'),'10'),
+					minheight	= parseInt($textarea.css('height'),10) || lineHeight*3,
+					maxheight	= parseInt($textarea.css('max-height'),10) || Number.MAX_VALUE,
+					goalheight	= 0;
 				
 				// Opera returns max-height of -1 if not set
 				if (maxheight < 0) { maxheight = Number.MAX_VALUE; }
@@ -114,7 +113,7 @@
 								setHeightAndOverflow(minheight,'hidden');
 							} else {
 								setHeightAndOverflow(goalheight,'hidden');
-							}	
+							}
 						}
 					}
 				}

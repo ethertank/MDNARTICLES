@@ -1,95 +1,97 @@
-﻿"use strict";
-(function($) {
+﻿"use strict";(function($) { /*（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）*/
 
 
-	// プラグイン jQuery elastic
-	$('#t').css("resize","none"); // js 有効時、即ちプラグイン有効時にのみ通常の手動リサイズ機能をカット
-	$('#t').elastic(); // 実行
-	$('#t').trigger('update'); // トリガの設定
+
+// プラグイン jQuery elastic
+$('#t').css("resize","none"); // js 有効時、即ちプラグイン有効時にのみ通常の手動リサイズ機能をカット
+$('#t').elastic(); // 実行
+$('#t').trigger('update'); // トリガの設定
 
 
-	// 本体。MDN の新システム Kuma で変更された URL などを修正。
-	$("#c").click(function() {
-		var t = $("#t")[0],
-		    s = t.value;
+
+// 本体。MDN の新システム Kuma で変更された URL などを修正。
+$("#c").click(function() {
+	var t = $("#t")[0],
+		s = t.value;
+
+	// URL
+	s = s.replace(/href=\"\/*en(-US\/docs)*\//gi, 'href="/en-US/docs/');
+	s = s.replace(/href=\"\/*Project\:en\//gi,'href="/en-US/docs/Project:');
+	s = s.replace(/Core_JavaScript_1\.5_/g, 'JavaScript/');    
+	s = s.replace(/Special:Tags\?tag=(.*?)(?:&|&amp;)language=en?/gi, 'en-US/docs/tag/$1');
 
 
-		// URL
-		s = s.replace(/href=\"\/*en(-US\/docs)*\//gi, 'href="/en-US/docs/');
-		s = s.replace(/href=\"\/*Project\:en\//gi,'href="/en-US/docs/Project:');
-		s = s.replace(/Core_JavaScript_1\.5_/g, 'JavaScript/');    
-		s = s.replace(/Special:Tags\?tag=(.*?)(?:&|&amp;)language=en?/gi, 'en-US/docs/tag/$1');
+	// title
+	s = s.replace(/Core JavaScript 1\.5/g, 'JavaScript/');
 
 
-		// title
-		s = s.replace(/Core JavaScript 1\.5/g, 'JavaScript/');
+	// title (-en)
+	s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/gi, 'title="');	
+	
+	
+	// 不要になったクラス (eval, deki-transform)
+	// URL 修正に伴い不要となった可能性の高いクラス(internal) ※必要であれば自動で付与される
+	s = s.replace(/ class=\"(?:eval|deki-transform|internal)\"/g, '');
+
+	
+	// id / name 属性の .C2.A2 を アンダースコアに
+	s = s.replace(/((?:id|name)=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');	
 
 
-		// title (-en)
-		s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/gi, 'title="');	
-		
-		
-		// 不要になったクラス (eval, deki-transform)
-		// URL 修正に伴い不要となった可能性の高いクラス(internal) ※必要であれば自動で付与される
-		s = s.replace(/ class=\"(?:eval|deki-transform|internal)\"/g, '');
-
-		
-		// id / name 属性の .C2.A2 を アンダースコアに
-		s = s.replace(/((?:id|name)=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');	
+	// テンプレートの詰め
+	s = s.replace(/\{\{ /g, '{{').replace(/ \}\}/g, '}}').replace(/\((("|'){2})*\)\}\}/g, '}}');
 
 
-		// テンプレートの詰め
-		s = s.replace(/\{\{ /g, '{{').replace(/ \}\}/g, '}}').replace(/\((("|'){2})*\)\}\}/g, '}}');
+	// 空 p
+	s = s.replace(/<p>(?:\s|&nbsp;)*<\/p>/g, '');
 
 
-		// 空 p
-		s = s.replace(/<p>(?:\s|&nbsp;)*<\/p>/g, '');
+	// p, dt, dd, li, hn の末尾スペース削除（先頭も要るか）
+	s = s.replace(/\s<\/(p|(?:dt|dd|li|h[1-6]))>/g, '</$1>');
+
+	
+	// よくある誤字の修正 ( http://jsfiddle.net/ethertank/eK6a2/ )
+	s = s.replace(/Mozil*a/g, 'Mozilla');
+	s = s.replace(/F(?:(?:ir|ie)|(?:ier)|(?:ore))(?:(?:g|f)*o*x)/g, 'Firefox');
 
 
-		// p, dt, dd, li, hn の末尾スペース削除（先頭も要るか）
-		s = s.replace(/\s<\/(p|(?:dt|dd|li|h[1-6]))>/g, '</$1>');
-
-		
-		// よくある誤字の修正 ( http://jsfiddle.net/ethertank/eK6a2/ )
-		s = s.replace(/Mozil*a/g, 'Mozilla');
-		s = s.replace(/F(?:(?:ir|ie)|(?:ier)|(?:ore))(?:(?:g|f)*o*x)/g, 'Firefox');
+	// <span class="comment">xxx</span> を <!-- xxx --> に置換
+	// ※未完成（<span><span class="comment">XYG</span></span> で死ぬ）
+	s = s.replace(/<span class="comment">(.*)<\/span>?/g, '<!-- $1 -->');
 
 
-		// <span class="comment">xxx</span> を <!-- xxx --> に置換
-		s = s.replace(/<span class="comment">(.*)<\/span>/g, '<!-- $1 -->');
+	// 古い言語間リンク用テンプレートのマクロの "<p>{{" と "}}</p>" を "<!--" と "-->" に置換
+	s = s.replace(/<(?:p|(?:div))>\s*\{\{(\s*(wiki\.)*languages.*)\}\}\s*<\/(?:p|(?:div))>/g,'<!--$1-->');
 
 
-		// 古い言語間リンク用テンプレートのマクロの "<p>{{" と "}}</p>" を "<!--" と "-->" に置換
-		s = s.replace(/<(?:p|(?:div))>\s*\{\{(\s*(wiki\.)*languages.*)\}\}\s*<\/(?:p|(?:div))>/g,'<!--$1-->');
+	// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。既にdivの場合マクロ前後の改行を削除
+	s = s.replace(/<(?:p|div)>\s*(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css(?:om)*|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated)\s*\}\})\s*<\/(?:p|div)>/gmi,'<div>$1</div>');
 
 
-		// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。
-		s = s.replace(/<p>(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css|CSSOM|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated)\s*\}\})<\/p>/gi,'<div>$1</div>');
+	// テンプレートしか内容を持たないdiv（※この様なdivの内容は全てブロックテンプレートであるとする）が連続している場合、1divに纏める
+	// ※未完成（惜しいけどこれだと連打しないといけないし、前提があやしい）
+	//s = s.replace(/<(?:p|div)>\s*((?:\{\{[a-zA-Z_]*\}\}?)*)<\/(?:p|div)>\s*<(?:p|div)>\s*((?:\{\{[a-zA-Z_]*\}\}?)*)\s*/gmi, '<div>$1$2');
 
 
-		// 画像パスの修正（要検証） https://bugzilla.mozilla.org/show_bug.cgi?id=795841
-		s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*\"?)/g, 'src="/files/$1/$2');
+	// 画像パスの修正（要検証） https://bugzilla.mozilla.org/show_bug.cgi?id=795841
+	s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*\"?)/g, 'src="/files/$1/$2');
+
+	
+	s = $.trim(s); // トリミング
+	t.value = s; // 出力
+});
 
 
-		// id / name 先頭及び末尾のアンダースコア（但し __proto__　等の為、２連続のものは除外）
-		// s = s.replace(/(?:((?:\s(?:id|name))=\")(.*)_{1}?(\"))?/g, '$1$2$3');	
 
-		
-		s = $.trim(s); // トリミング
-		t.value = s; // 出力
-	});
-
-
-	// Delete ボタン
-	$("#d").click(function() {
-		$("#t")[0].value = "";
-		$("#t").css("height","inherit");
-	});
+// Delete ボタン
+$("#d").click(function() {
+	$("#t")[0].value = "";
+	$("#t").css("height","inherit");
+});
 
 
-})(jQuery);
+
 /*
-
 # TODO (･ω･｀)
 	見出しの中の 不要な nbsp エスケープの置換とトリム
 
@@ -108,3 +110,5 @@
 	同一 id を持つ要素が重複して存在する場合、二つ目以降の id に "-2" の様な連番を振った上で内容からの自動変換を防ぐ為に同値の name 属性を設定し重複を回避。正規表現だけで出来る？
 
 */
+
+/*（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）（・∀・）*/ })(jQuery);
