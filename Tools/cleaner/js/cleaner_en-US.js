@@ -20,7 +20,7 @@ $("#c").click(function() {
 	s = s.replace(/Core_JavaScript_1\.5_/g, 'JavaScript/');    
 	s = s.replace(/Special:Tags\?tag=(.*?)(?:&|&amp;)language=en?/gi, 'en-US/docs/tag/$1');
 
-    // anchor
+	// anchor
 	s = s.replace(/(categories#)f(low|orm)/g, '$1F$2');
 	s = s.replace(/(categories#)p(hrasing)/g, '$1P$2');
 	s = s.replace(/(categories#)s(ectioning)/g, '$1S$2');
@@ -33,16 +33,13 @@ $("#c").click(function() {
 
 	// title
 	s = s.replace(/Core JavaScript 1\.5/g, 'JavaScript/');
-
-
-	// title (-en)
 	s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/gi, 'title="');
 
 
-	// id / name
+	// id, name
 	s = s.replace(/\"Browser_Compatibility\"/g, '"Browser_compatibility"');
 	s = s.replace(/\"See_Also\"/g, '"See_also"');
-
+	
 	
 	// 不要になったクラス (eval, deki-transform)
 	// URL 修正に伴い不要となった可能性の高いクラス(internal) ※必要であれば自動で付与される
@@ -63,6 +60,11 @@ $("#c").click(function() {
 
 	// p, dt, dd, li, hn の末尾スペース削除（先頭も要るか）
 	s = s.replace(/\s<\/(p|(?:dt|dd|li|h[1-6]))>/g, '</$1>');
+	
+	
+	// headline
+	s = s.replace(/(See)(?:\s|&nbsp;)A(lso<\/h)/g,'$1 a$2');
+	s = s.replace(/(Browser)(?:\s|&nbsp;)C(ompatibility<\/h)/g,'$1 c$2');
 
 	
 	// よくある誤字の修正 ( http://jsfiddle.net/ethertank/eK6a2/ )
