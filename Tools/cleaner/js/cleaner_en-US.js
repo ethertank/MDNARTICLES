@@ -20,14 +20,29 @@ $("#c").click(function() {
 	s = s.replace(/Core_JavaScript_1\.5_/g, 'JavaScript/');    
 	s = s.replace(/Special:Tags\?tag=(.*?)(?:&|&amp;)language=en?/gi, 'en-US/docs/tag/$1');
 
+    // anchor
+	s = s.replace(/(categories#)f(low|orm)/g, '$1F$2');
+	s = s.replace(/(categories#)p(hrasing)/g, '$1P$2');
+	s = s.replace(/(categories#)s(ectioning)/g, '$1S$2');
+	s = s.replace(/(categories#)h(eading)/g, '$1H$2');
+	s = s.replace(/(categories#)e(mbedded)/g, '$1E$2');
+	s = s.replace(/(categories#)i(nteractive)/g, '$1I$2');
+	s = s.replace(/(categories#)m(etadata)/g, '$1M$2');
+	s = s.replace(/(categories#)t(ransparent)/g, '$1T$2');
+
 
 	// title
 	s = s.replace(/Core JavaScript 1\.5/g, 'JavaScript/');
 
 
 	// title (-en)
-	s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/gi, 'title="');	
-	
+	s = s.replace(/title=\"\/*en(-US)*\/(docs\/)*/gi, 'title="');
+
+
+	// id / name
+	s = s.replace(/\"Browser_Compatibility\"/g, '"Browser_compatibility"');
+	s = s.replace(/\"See_Also\"/g, '"See_also"');
+
 	
 	// 不要になったクラス (eval, deki-transform)
 	// URL 修正に伴い不要となった可能性の高いクラス(internal) ※必要であれば自動で付与される
@@ -35,7 +50,7 @@ $("#c").click(function() {
 
 	
 	// id / name 属性の .C2.A2 を アンダースコアに
-	s = s.replace(/((?:id|name)=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');	
+	s = s.replace(/((?:id|name)=\".+?)\.C2\.A0(.+?\")?/g, '$1_$2');
 
 
 	// テンプレートの詰め
@@ -65,8 +80,7 @@ $("#c").click(function() {
 
 
 	// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。既にdivの場合マクロ前後の改行を削除
-	s = s.replace(/<(?:p|div)>\s*(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css(?:om)*|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated)\s*\}\})\s*<\/(?:p|div)>/gmi,'<div>$1</div>');
-
+	s = s.replace(/<(?:p|div)>\s*(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css(?:om)*|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated|SeeCompatTable)\s*\}\})\s*<\/(?:p|div)>/gmi,'<div>$1</div>');
 
 	// テンプレートしか内容を持たないdiv（※この様なdivの内容は全てブロックテンプレートであるとする）が連続している場合、1divに纏める
 	// ※未完成（惜しいけどこれだと連打しないといけないし、前提があやしい）
