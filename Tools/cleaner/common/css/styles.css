@@ -36,6 +36,7 @@ button {
 	border: 1px solid #eee;
     padding: 0 2.25em; margin: .75em 0 .75em 10px;
 	color: #fff;
+	text-shadow: 1px 1px 1px #000;
 	background-color: #224;
 	background-color: #003;
 	background-image: -webkit-linear-gradient(top, #66F2FF, #006199, #003099);
