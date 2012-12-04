@@ -82,7 +82,7 @@ $("#c").click(function() {
 
 
 	// 不正な出力になる、ブロックテンプレートしか内容を持たない p の div への置換。既にdivの場合マクロ前後の改行を削除
-	s = s.replace(/<(?:p|div)>\s*(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css(?:om)*|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated|SeeCompatTable)\s*\}\})\s*<\/(?:p|div)>/gmi,'<div>$1</div>');
+	s = s.replace(/<(?:p|div)>\s*(\{\{\s*((?:MDCProjectPages|html5article)Toc|(?:css(?:om)*|dom)ref|(?:deprecated|non-standard|obsolete)_header|translationInProgress|翻訳中|outDated|SeeCompatTable|xpcomapi)\s*\}\})\s*<\/(?:p|div)>/gmi,'<div>$1</div>');
 
 	// テンプレートしか内容を持たないdiv（※この様なdivの内容は全てブロックテンプレートであるとする）が連続している場合、1divに纏める
 	// ※未完成（惜しいけどこれだと連打しないといけないし、前提があやしい）
@@ -91,6 +91,8 @@ $("#c").click(function() {
 
 	// 画像パスの修正（要検証） https://bugzilla.mozilla.org/show_bug.cgi?id=795841
 	s = s.replace(/fileid=\"(.*)\"\s*src=\"File:en\/Media_Gallery\/(.*\"?)/g, 'src="/files/$1/$2');
+	
+	s = s.replace(/<div class=\"noinclude\">(?:\s|\b|&nbsp;)*<\/div>?/gm, '');
 
 	
 	s = $.trim(s); // トリミング
@@ -103,6 +105,10 @@ $("#c").click(function() {
 $("#d").click(function() {
 	$("#t")[0].value = "";
 	$("#t").css("height","inherit");
+});
+
+$("#s").click(function(){
+	$("#t").select();
 });
 
 

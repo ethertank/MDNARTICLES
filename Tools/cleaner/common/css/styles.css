@@ -1,13 +1,16 @@
 ﻿@charset "utf-8";
-@import url(http://fonts.googleapis.com/css?family=Sancreek);
+@import url(http://fonts.googleapis.com/css?family=Electrolize);
 
 html { overflow-y: scroll; }
 
+body, button, [type="button"] {
+	font-family: 'Electrolize', sans-serif;
+}
+
 body {
-	font-family: "Times New Roman", Times, serif;
 	line-height: 1.5;
 	margin: 0; padding: 0;
-	font-size: 15px;
+	font-size: 13px;
 	background-color: #eee;
 	background-size: 10px 10px;
 	background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 9px, #fff 10px), -webkit-linear-gradient(top, #eee 9px, #fff 10px);
@@ -15,26 +18,34 @@ body {
 	background-image:	  linear-gradient(to right, rgba(255,255,255,0) 9px, #fff 10px),  linear-gradient(to bottomm, #eee 9px, #fff 10px);
 }
 
-h1 { font-size: 1.5em; }
-h2, button { font-size: 1.25em; }
+h1 { font-size: 1.25em; }
+h2 { font-size: 1.25em; }
 
-h1, h2, button { font-family: 'Sancreek', 'Times new roman', times, cursive; font-weight: 400; }
+h1, h2, button { font-weight: 400; }
+
+code { border: 1px solid #000; background: #fff; padding: 1px 2px; }
+pre code { border: none; background: none transparent; padding: 0; }
 
 h1,
 .content { padding: 10px 20px; }
 
 button,
-textarea { border-radius: 5px; }
+textarea { background-clip: padding-box; border-radius: 3px; line-height: 1.75; }
 
 button {
-	color: #fff;
-	background-color: #222;
-	background-image: -webkit-linear-gradient(top, #888, #222, #000);
-	background-image:    -moz-linear-gradient(top, #888, #222, #000);
-	background-image:   linear-gradient(to bottom, #888, #222, #000);
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 	border: 1px solid #eee;
+    padding: 0 2.25em; margin: .75em 0 .75em 10px;
+	color: #fff;
+	background-color: #224;
+	background-color: #003;
+	background-image: -webkit-linear-gradient(top, #66F2FF, #006199, #003099);
+	background-image:    -moz-linear-gradient(top, #66F2FF, #006199, #003099);
+	background-image:   linear-gradient(to bottom, #66F2FF, #006199, #003099);
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+	text-transform: uppercase;
 }
+
+
 
 button:hover,
 button:focus {
@@ -44,24 +55,40 @@ button:focus {
 	background-image:   linear-gradient(to bottom, #CBFBFF, #00A3FF, #0052FF);
 }
 
-#global_header {
+#gHeaderWrapper {
 	margin: 0;
 	background-color: #000;
-	background-image: -webkit-linear-gradient(top, #555, #222);
-	background-image:    -moz-linear-gradient(top, #555, #222);
-	background-image:   linear-gradient(to bottom, #555, #222);
+	background-image: -webkit-linear-gradient(top, #fc3, #700);
+	background-image:    -moz-linear-gradient(top, #fc3, #700);
+	background-image:   linear-gradient(to bottom, #fc3, #700);
 	border-bottom: 1px solid #fff;
 	box-shadow: 0 2px 2px #555;
 	text-indent: 4px;
+	text-shadow: -1px -1px 0 black;
 }
 
-#global_header h1 { color: #fff; margin: 0; display: inline-block; }
+#gHeaderWrapper h1 { color: #fff; margin: 0; display: inline-block; }
 
-#c,
-#d { padding: 2px 48px; margin: 10px 10px 10px 0; }
+h1,
+#buttons { float: left; }
+#forkMe { float: right; }
+
+#buttons { margin: 0 10px; }
+
+#forkMe {
+	font-size: 13px;
+	font-family:
+		Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", 
+		"Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, 
+		Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+	padding: 0 21px;
+	color: #fff !important;
+	line-height: 3;
+}
+
 
 textarea {
-	font-family: "Courier New", Courier, monospace; font-size: 13px; line-height: 1;
+	font-family: "MS Gothic", "Courier New", Courier, monospace; font-size: 13px; line-height: 1;
 	display: block; -moz-box-sizing: border-box; box-sizing: border-box; width:100%; min-height: 100px; margin: 0 0 1.25em; padding: 3px;
 	box-shadow: inset 1px 1px 2px 0 #888;
 	background: #fff;
@@ -75,41 +102,6 @@ textarea {
 .inlineList li { display: inline-block; margin: 0; }
 .inlineList li:after { content: ", "; }
 .inlineList .last:after { content: none; }
-
-#forkMe {
-	display: block; width: 250px; padding: .25em;
-	font-size: 13px;
-	font-family:
-		Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", 
-		"Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, 
-		Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
-
-	word-spacing: 2px;
-	text-decoration: none;
-
-	position: fixed;
-	right: 0px;
-	top: 0px;
-	text-align: center;
-
-	-webkit-transform-origin: 0 0;
-	   -moz-transform-origin: 0 0;
-	        transform-origin: 0 0;
-
-	-webkit-transform: rotate(45deg) translate(4em, -9em);
-	   -moz-transform: rotate(45deg) translate(4em, -9em);   
-	        transform: rotate(45deg) translate(4em, -9em);   
-
-	box-shadow: 0 0 0 1px #d0d, 0 0 0 4px #606, 1px 1px 5px 1px #000;
-
-	color: #FFF !important;
-
-	background-color: #909;
-	background-image: -webkit-linear-gradient(top, #909, #707, #909);
-	background-image:    -moz-linear-gradient(top, #909, #707, #909);
-	background-image:   linear-gradient(to bottom, #909, #707, #909);
-}
-
 
 
 

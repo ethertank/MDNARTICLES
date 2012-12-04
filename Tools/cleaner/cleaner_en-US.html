@@ -15,16 +15,21 @@
 
 <!--[if lt IE 7]><p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p><![endif]-->
 
-<header id="global_header">
+<div id="gHeaderWrapper" class="clearfix">
+
 <h1>MDN Code Cleaner (for en-US)</h1>
-</header>
 
-<div class="content">
-
-<div>
+<div id="buttons">
 <button id="c">Convert</button>
 <button id="d">Delete</button>
+<button id="s">Select All</button>
 </div>
+
+<a id="forkMe" href="https://github.com/ethertank/MDNARTICLES" title="Fork me on GitHub !">Fork me on GitHub</a>
+
+</div>
+
+<div class="content">
 
 <textarea id="t">
 &lt;p&gt;{{domref('')}}&lt;/p&gt;
@@ -80,6 +85,10 @@ _.C2.A2_
 &lt;p&gt;{{html5articletoc("")}}&lt;/p&gt;
 
 &lt;span class="comment"&gt;XYG&lt;/span&gt;
+
+&lt;div class="noinclude"&gt;
+  &amp;nbsp;&lt;/div&gt;
+
 &lt;p&gt;{{ languages( { "fr": "fr/CSS/display", "pl": "pl/CSS/display" } ) }}&lt;/p&gt;
 &lt;p&gt;{{ wiki.languages( { "fr": "fr/CSS/display", "pl": "pl/CSS/display" } ) }}&lt;/p&gt;
 </textarea>
@@ -91,13 +100,13 @@ _.C2.A2_
 <li><del><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=795272">795272 – Non-breaking spaces in H tags are encoded in the id attribute, would probably be better to make underscore</a></del></li>
 <li><del><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=795841" title="795841 – Update File:en/Media_Gallery/... image links">795841 – Update File:en/Media_Gallery/... image links</a></del></li>
 <li><a href="http://jsfiddle.net/ethertank/eK6a2/embedded/result/">GozillaList - jsFiddle</a></li>
-<li>&lt;span&gt;&lt;span class="comment"&gt;XYG&lt;/span&gt;&lt;/span&gt; &raquo;&raquo;&raquo; &lt;span&gt;&lt;!-- XYG&lt;/span&gt; --&gt;</li>
+<li><code>&lt;span&gt;&lt;span class="comment"&gt;XYG&lt;/span&gt;&lt;/span&gt;</code> &raquo;&raquo;&raquo; <code>&lt;span&gt;&lt;!-- XYG&lt;/span&gt; --&gt;</code></li>
 </ul>
 </section>
 
 <ul class="inlineList credit">
 <li><small>Made by: ethertank</small></li>
-<li><small>lastUpdate: Dec 3, 2012</small></li>
+<li><small>lastUpdate: Dec 4, 2012</small></li>
 <li><small>license: <a href="http://sam.zoy.org/wtfpl/COPYING">WTFPL</a></small></li>
 <li class="last"><small>Include: <a href="http://unwrongest.com/projects/elastic/" title="Elastic - Dynamic Height Textarea Jquery Plugin | Unwrongest">Elastic - Dynamic Height Textarea Jquery Plugin | Unwrongest</a></small></li>
 </ul>
@@ -105,6 +114,6 @@ _.C2.A2_
 
 </div>
 
-<a id="forkMe" href="https://github.com/ethertank/MDNARTICLES">Fork me on GitHub</a>
+
 
 <script src="js/cleaner_en-US.js"></script></body></html>
