@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無題ドキュメント</title>
+</head>
+<body>
+
+<textarea id="r" style="position:absolute;top:20px;right:20px;bottom:20px;left:20px;resize:none;font-size:13px;"></textarea>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+$(function() {
+	
+$.getJSON(
+	'mdn_all_articles_en-us.json',
+	function(data, status) {
+		var a = [];
+		for(var i = 0, l = data.length; i < l; i++) {
+			if(/\(external\)|Core_JavaScript_1.5|Core_1.5_JavaScript|(AJAX|ARIA|Accessibility|CSS|CSS-2_Quick_Reference|DOM|EXSLT|Extensions|NSS|XML|XUL):|%E5%9F%BA|javascript:alert|alert\(|azsdfvg|slugslug/i.test(data[i].URL) === false) {
+				a.push('\n\t"' + data[i].URL.replace(/https:\/\/developer.mozilla.org\/en-US\/docs\//gmi,'') + '"');
+			}
+		}
+		$("#r").val("var allArticles = [" + a + "\n];");
+	}
+);
+
+
+});
+</script>
+
+
+</body>
+</html>
